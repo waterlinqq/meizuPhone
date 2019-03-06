@@ -1,7 +1,10 @@
+$('.hamburger-menu').on('click',function(){
+	$('.menu').slideToggle(400)
+})
+
 $('#fullpage').fullpage({
         verticalCentered:false, 
 		navigation:true, 
-		navigationTooltips:['','青年良品','多彩纖薄機身','一體化成型','5.5 英寸 1080P','64 位八核 CPU','雙4G雙卡雙待','1300 萬像素','3100mAh 典型容量','Android 5.1 内核',''], 
 		scrollingSpeed:700, 
 		//anchors:['','qingnian','duocai','yitihua','1080P','64CPU','dual4G','1300w','3100mAh','Android',''], // 设置锚链接
 		//頁面離開
@@ -39,7 +42,7 @@ $('#fullpage').fullpage({
 		afterLoad:function (anchorLink,index) {
 			switch (index) {
 				case 1:
-					$('.s1>*').animate({'opacity':'1'},500);
+					$('.s1>*').animate({'opacity':'1'},1000);
 					break;
 				case 2:
 					$('.s2 .blue').animate({'left': '25%'},1000);

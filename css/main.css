@@ -24,10 +24,6 @@ li {
     list-style: none;
 }
 
-.container {
-    width: 90%;
-    margin: 0 auto;
-}
 
 .clearfix::before,
 .clearfix::after {
@@ -36,6 +32,10 @@ li {
 }
 .clearfix::after {
     clear: both;
+}
+
+.section {
+    overflow: hidden;
 }
 /*========
 頁面樣式
@@ -52,7 +52,7 @@ nav {
 }
 
 nav .brand {
-
+    margin-left: 2rem; 
     display: inline-block;
 }
 nav ul a {
@@ -67,11 +67,28 @@ nav ul a:hover {
 
 nav ul {
     float: right;
+    display: none;
+}
+nav .hamburger-menu {
+    background-color: transparent;
+    border: none;
+    display: inline-block;
+    margin: 1rem 2rem 0 2rem;
+    display: none;
+    padding-top: 4px;
+}
+
+nav .hamburger-menu .icon-bar {
+    background-color: #3a90c9;
+    display: block;
+    height: 4px;
+    margin: 0 auto 4px;
+    width: 30px;
 }
 
 nav button {
     line-height: 38px;
-    margin: 10px 0px;
+    margin: 10px 20px 10px 0px;
     float: right;
     background-color: #3a90c9;
     border: 1px solid transparent;   
@@ -101,20 +118,49 @@ nav button a{
 }
 
 @media only screen and (max-width: 30em){
-    nav ul a {
-        padding: 0 0.8rem;
+    nav .hamburger-menu {
+        display: inline-block;
+    }
+    nav button {
+        display: none
     }
 
+    nav ul {
+        float: none;
+    }
+    nav ul::before {
+        content: '馬上購買';
+        display: block;
+        line-height: 40px;
+        text-align: center;
+        background-color: rgba(255,255,255,.8);
+        cursor: pointer;
+        font-size: 1.4rem;
+    }
+    
+ 
+    nav ul a {
+        padding: 0 0.8rem;
+        text-align: center;
+        line-height: 40px;
+        font-size: 1.4rem;
+    }
+
+    nav ul a {
+        display: block;
+        background-color: rgba(255,255,255,.8);
+    }
     nav ul a:nth-child(4){
-        display: inline-block;
+        display: block;
+        background-color: rgba(255,255,255,.8);
     }
 }
 /* section */
 .s1 {
     background-image: url('../img/bg1-s.jpg');
     background-size: cover;
+    background-position: center;
 }
-
 .s1 .detail {
     text-align: center;
     position: absolute;
@@ -123,7 +169,8 @@ nav button a{
     bottom: 20%;
     color: #fff;
     font-size: 1.2rem;
-    text-shadow: 1px 1px 2px #555
+    text-shadow: 1px 1px 2px #555;
+    opacity: .5;
 }
 
 .s1 .detail h2 {
@@ -131,10 +178,27 @@ nav button a{
     margin-bottom: 0px;
 }
 
+@media only screen and (max-width: 48em){
+    .s1 .detail {
+        text-align: center;
+        position: absolute;
+        left: 15%;
+        width: 70%;
+    }
+}
+@media only screen and (max-width: 30em) {
+    .s1 .detail {
+        bottom: 30%;
+    }
+    
+    .s1 .detail h2 {
+        font-size: 3.0rem;
+    }
+}
+
 .s2 {
     background-image: url('../img/bg2.jpg');
     background-size: cover;
-    overflow: hidden;
 }
 
 .s2 .detail {
@@ -166,7 +230,7 @@ nav button a{
     position: absolute;
     bottom: 0;
     width: 30%;
-    margin-bottom: -10%;
+    margin-bottom: -20%;
     left: -50%;
 
 }
@@ -174,16 +238,38 @@ nav button a{
 .s2 .img-box .white {
     position: absolute;
     bottom: 0;
-    margin-bottom: -10%;
+    margin-bottom: -20%;
     width: 30%;
     right:  -50%;
+
+}
+@media only screen and (max-width: 48em){
+    .s2 .img-box .blue {
+        margin-bottom: -10%;
+    }
+    .s2 .img-box .white {
+        margin-bottom: -10%;
+    }
+}
+@media only screen and (max-width: 30em){
+    .s2 .img-box .blue {
+        margin-bottom: 0%;
+        width: 40%;
+    }
+    .s2 .img-box .white {
+        margin-bottom: 0%;
+        width: 40%;
+    }
+    .s2 .detail h2 {
+        font-size: 2.6rem
+    }
 
 }
 
 .s3 {
     background-image: url('../img/bg3-xs.jpg');
     background-size: cover;
-    overflow: hidden;
+    background-position: center;
 }
 
 
@@ -200,13 +286,22 @@ nav button a{
     font-size: 3.6rem;
     margin-bottom: 0px;
 }
-
+@media only screen and (max-width: 30em){
+    .s3 .detail {
+        width: 70%;
+        margin-bottom: 10%;
+    }
+    .s3 .detail h2 {
+        font-size: 2.6rem;
+    }
+}
 
 .s4 .detail{
     position: absolute;
     top: 20%;
     max-width: 400px;
     padding: 5rem;
+    z-index: 2;
 }
 
 .s4 .detail p:nth-child(n+3){
@@ -234,6 +329,19 @@ nav button a{
     bottom: 0;
     right: 0;
     width: 50%;
+}
+@media only screen and (max-width: 48em) {
+    .s4 .detail{
+        top: 15%;
+    }
+}
+@media only screen and (max-width: 30em) {
+    .s4 .detail {
+        top: 0;
+    }
+    .s4 .detail h2 {
+        font-size: 2.6rem;
+    }
 }
 
 .s5 .detail {
@@ -267,10 +375,28 @@ nav button a{
     background-position: center top;
 }
 
+@media only screen and (max-width: 48em) {
+    .s5 .img{
+        top: 60%;
+    }
+}
+@media only screen and (max-width: 48em) {
+    .s5 .img{
+        top: 70%;
+    }
+    .s5 .detail {
+        margin: 0 auto;
+        width: 80%;
+    }
+    .s5 .detail h2 {
+        font-size: 2.6rem
+    }
+}
+
 .s6 .img-box {
     position: relative;
     top: 8%;
-    width: 80%;
+    width: 70%;
 }
 
 .s6 .img-box .card {
@@ -299,10 +425,29 @@ nav button a{
     font-size: 3.0rem;
     margin-bottom: 0;
 }
+@media only screen and (max-width: 48em){
+    .s6 .img-box {
+        width: 60%;
+    }
+}
+@media only screen and (max-width: 30em){
+    .s6 .img-box {
+        width: 50%;
+    }
+    .s6 .detail {
+        padding: 0;
+        right: 10%;
+        width: 80%;
+        bottom: 30%;
+        text-align: left;
+    }
+    .s6 .detail h2 {
+        font-size: 2.6rem;
+    }
+}
 
 .s7 {
     background-image: url(../img/bg7-s.jpg);
-    background-size: ;
     background-position: center top;
     opacity: .2;
 }
@@ -322,10 +467,24 @@ nav button a{
     font-size: 3.0rem;
     margin-bottom: 0;
 }
-
+@media only screen and (max-width: 48em){
+    .s7 .detail {
+        width: 60%;
+        padding: 0rem;
+        bottom: 30%;
+    }
+}
+@media only screen and (max-width: 30em){
+    .s7 .detail {
+        width: 75%;
+        text-align: left;
+    }
+    .s7 .detail h2 {
+        font-size: 2.6rem;
+    }
+}
 .s8 {
     background-color: #3a90c9;
-    overflow: hidden;
 }
 
 .s8 .img-box .bbb{
@@ -354,6 +513,23 @@ nav button a{
     margin-bottom: 0;
     bottom: 1000px;
 }
+@media only screen and (max-width: 48em){
+    .s8 .detail {
+        right: 20%;
+        width: 60%;
+        padding: 0;
+        bottom: 30%;
+    }
+}
+@media only screen and (max-width: 30em){
+    .s8 .detail {
+        right: 15%;
+        width: 70%;
+    }
+    .s8 .detail h2 {
+        font-size: 2.6rem;
+    }
+}
 
 .s9 .detail {
     text-align: center;
@@ -378,20 +554,20 @@ nav button a{
 
 .s9 .p1 {
     position: absolute;
-    left: 10%;
+    left: 15%;
     width: 30%;
     margin-top: 10%;
 }
 
 .s9 .p2 {
     position: absolute;
-    left: 30%;
+    left: 35%;
     width: 30%;
 }
 
 .s9 .p3 {
     position: absolute;
-    left: 50%;
+    left: 55%;
     width: 30%;
     margin-top: 10%;
 }
@@ -401,6 +577,21 @@ nav button a{
     transform:scale(1.1);
     z-index: 1;
 }
+@media only screen and (max-width: 48em){
+    .s9 .detail {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+@media only screen and (max-width: 30em){
+    .s9 .detail h2 {
+        font-size: 2.6rem
+    }
+    .s9 .img-box {
+        top: 60%
+    }
+}
+
 
 .footer {
     background-color: #f5f5f5;
@@ -428,4 +619,14 @@ nav button a{
 .footer .copyright {
     margin: 0;
     text-align: center;
+}
+
+@media only screen and (max-width: 30em){
+    .footer dl {
+        width: 30%;
+    }
+    .footer {
+        height: 340px !important;
+
+    }
 }
